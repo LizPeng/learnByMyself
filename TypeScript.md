@@ -1,0 +1,1 @@
+[原文地址](http://taobaofed.org/blog/2017/03/09/head-first-typescript/)
