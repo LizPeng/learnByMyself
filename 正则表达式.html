@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title正则</title>
+</head>
+<body>
+  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions">Link here</a>
+  <h2>正则表达式中的特殊字符</h2>
+    <dl>
+      <dt class="dt-title">\</dt>
+      <dd>在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。<b>还能匹配字符边界</b></dd>
+      <dd>也可以将其后的特殊字符，转义为字面量。/a\*/，匹配a*这样的字符串</dd>
+      <dd>使用 new RegExp("pattern") 的时候不要忘记将 \ 进行转义，因为 \ 在字符串里面也是一个转义字符。</dd>
+      <dt class="dt-title">^</dt>
+      <dd>匹配输入的开始。</dd>
+      <dt class="dt-title">$</dt>
+      <dd>匹配输入的结束。</dd>
+      <dt class="dt-title">*</dt>
+      <dd>匹配前一个表示0次或多次。等价于{0,}</dd>
+      <dt class="dt-title">+</dt>
+      <dd>匹配前面一个表达式1次或者多出。等价于{1,}</dd>
+      <dt class="dt-title">?</dt>
+      <dd>匹配前面一个表达式0次或者1次。等价于{0,1}</dd>
+      <dt class="dt-title"></dt>
+      <dd></dd>
+      <dt class="dt-title"></dt>
+      <dd></dd>
+      <dt class="dt-title"></dt>
+      <dd></dd>
+      <dt class="dt-title"></dt>
+      <dd></dd>
+    </dl>
+  <script>
+    /*创建一个正则表达式的两种方式
+      一、使用正则表达式字面量
+      二、调用RegExp对象的构造函数
+    */ 
+    const regexA = /ab+c/;
+    let regexAv2 = new RegExp("ab+c");
+    const regexB = /^[a-zA-Z]+[0-9]*\W?_$/gi;
+    let regexBv2 = new RegExp("^[a-zA-Z]+[0-9]*\W?_$","gi")
+  </script>
+</body>
+</html>
