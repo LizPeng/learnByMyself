@@ -19,15 +19,19 @@
       <dt class="dt-title">$</dt>
       <dd>匹配输入的结束。</dd>
       <dt class="dt-title">*</dt>
-      <dd>匹配前一个表示0次或多次。等价于{0,}</dd>
+      <dd>匹配前一个表达式0次或多次。等价于{0,}</dd>
       <dt class="dt-title">+</dt>
       <dd>匹配前面一个表达式1次或者多出。等价于{1,}</dd>
       <dt class="dt-title">?</dt>
       <dd>匹配前面一个表达式0次或者1次。等价于{0,1}</dd>
-      <dt class="dt-title"></dt>
-      <dd></dd>
-      <dt class="dt-title"></dt>
-      <dd></dd>
+      <dt class="dt-title">.</dt>
+      <dd>（小数点）匹配除换行符之外的任何单个字符；理解成通配符</dd>
+      <dd>例如，/.n/将会匹配 "nay, an apple is on the tree" 中的 'an' 和 'on'，但是不会匹配 'nay'。</dd>
+      <dt class="dt-title">(x)</dt>
+      <dd>匹配'x'并且记住匹配项。括号被称为 捕获括号</dd>
+      <dd>
+        模式 /(foo) (bar) \1 \2/ 中的 '(foo)' 和 '(bar)' 匹配并记住字符串 "foo bar foo bar" 中前两个单词。模式中的 \1 和 \2 匹配字符串的后两个单词。注意 \1、\2、\n 是用在正则表达式的匹配环节。在正则表达式的替换环节，则要使用像 $1、$2、$n 这样的语法，例如，'bar foo'.replace( /(...) (...)/, '$2 $1' )。
+      </dd>
       <dt class="dt-title"></dt>
       <dd></dd>
       <dt class="dt-title"></dt>
