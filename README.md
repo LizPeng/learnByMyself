@@ -95,3 +95,30 @@ shift()方法从数组中删除第一个元素，并返回该元素的值，此�
     
     console.log(b); 
     // 1
+
+## Array.prototype.reduce()
+
+reduce() 方法对累加器和数组中的每个元素（从左到右）应用一个函数，将其减少为单个值。
+
+语法：
+
+ `array.reduce(function(accumulator, currentValue,currentIndex, array), initialValue)`
+
+> 
+- callback：执行数组中每个值的函数，包含四个参数
+- accumulator：上一次调用回调返回的值，或者是体用的初始值(initialValue)
+- currentValue： 数组中正在处理的元素
+- currentIndex： 数据中正在处理的元素索引，如果提供了initialValue,从0开始；否则从1开始
+- array：调用reduce的数组
+
+返回值： 函数累计处理的结果
+
+    var total = [0, 1, 2, 3].reduce(function(sum, value) {
+      return sum + value;
+    }, 0);
+    // total is 6
+
+    var flattened = [[0, 1], [2, 3], [4, 5]].reduce(function(a, b) {
+      return a.concat(b);
+    }, []);
+    // flattened is [0, 1, 2, 3, 4, 5]
