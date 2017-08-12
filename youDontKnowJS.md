@@ -27,3 +27,18 @@ examples：
     foo(2)
 
 最后一行的foo(..)函数的调用需要对foo进行RHS引用，
+
+小测验
+
+    function foo(a){
+    	var b = a ;
+    	return a+b;
+    }
+    var c = foo(2)
+
+1、找到其中所有的LHS查询。3处
+2、找到其中所有的RHS查询。4处
+
+
+## 1.3 作用域嵌套
+
