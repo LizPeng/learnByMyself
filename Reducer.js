@@ -28,6 +28,15 @@ const reducer2 = combineReducers({
 //combinerReducer的简单实现
 const combineReducers = reducers => {
   return (state ={}, action) => {
-    
+    return Object.keys(reducers).reduce(
+      (nextState, key) => {
+        nextState[key] = reducers[key](state[key], action);
+      },
+      {}
+    )
   }
 }
+
+store.dispatch(action)//发出action
+let nextState = todoApp(previousState, action)
+store.subscribe(listener)

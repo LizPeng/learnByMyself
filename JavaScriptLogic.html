@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //1、数组元素统计方法，统一数组中各个元素出现的次数，使用O（1）复杂度算法。
+    function makeCount(arr){
+      let countObj = {}
+      for(let item of arr){
+        countObj[item] ? countObj[item] ++ : countObj[item] = 1;
+      }
+      return countObj;
+    }
+    //2计算目录/a/b/c/d/e.js和/a/b/f/g.js的相对目录。
+    function caculateRoute(path1, path2) {
+      let pathArr1 = path1.split('/'),
+          pathArr2 = path2.split('/'),
+          routeArr = [],
+          fileArr = [],
+          diff = false,
+          length = pathArr1.length;
+      for (let i = 1;i<length;i++){
+        if(pathArr1[i] !== pathArr2[i] || diff) {
+          if(pathArr1[i]){
+            routeArr.push('..');
+            console.log('routeArr'+routeArr)
+          }
+          if(pathArr2[i]){
+            fileArr.push(pathArr2[i]);
+            console.log('fileArr'+fileArr)
+          }
+          diff = true
+        } else {
+          diff = false;
+        }
+      }
+      return routeArr.join('/')+'/'+fileArr.join('/');
+    }
+
+  </script>
+</body>
+</html>
