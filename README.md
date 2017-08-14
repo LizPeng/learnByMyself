@@ -10,7 +10,11 @@ argumens.callee
 
 # ES6
 
-[暂无内容](https://github.com/LizPeng/learnByMyself/tree/master/ES6)
+学习来源
+[ECMAScript 6入门](http://es6.ruanyifeng.com/)
+
+内容
+[Just Promise + function](https://github.com/LizPeng/learnByMyself/tree/master/ES6)
 
 # React
 
