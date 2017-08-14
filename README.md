@@ -22,6 +22,9 @@ argumens.callee
 
 make-redux思维导图
 
+# JavaScript数据结构和算法
+
+[数据结构和算法](https://github.com/LizPeng/learnByMyself/tree/master/JSDataStructuresAndAlgo)
 # 正则表达式
 
 [正则表达式基础用法](https://github.com/LizPeng/learnByMyself/tree/master/regex)
@@ -38,3 +41,4 @@ make-redux思维导图
 # 函数式编程
 
 [函数式编程基础](https://github.com/LizPeng/learnByMyself/tree/master/functional_programming)
+
