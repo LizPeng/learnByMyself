@@ -8,6 +8,35 @@ function LinkedList() {
   var length = 0 ;//2存储列表项的数量的length属性
   var head = null;//3存储第一个节点的引用
 
+  ///////////////////////////////
+  //移除元素
+  this.removeAt = function(position){
+    //检查越界值 
+    if(position > -1 && position < length) {
+      var current = head, //用current变量创建一个队列中第一个元素的引用（还会用它来迭代列表）
+          previous,
+          index = 0;
+      //移除第一项
+      if(position === 0){
+        head = current.next;
+      } else {
+        while( index++ < position ){
+          previous = current;
+          current = current.next;
+        }
+        //将previous与current的下一项链接起来：跳过current，从而移除它
+        previous.next = current.next;
+      }
+      length--;
+
+      return current.element;
+    } else {
+      return null;
+    }
+  }
+
+
+  //////////////////////////////////////////
   //向链表尾部追加元素
   this.append = function(element) {
     var node = new Node(element) ,//1把element作为值传入，创建Node项
@@ -31,4 +60,76 @@ function LinkedList() {
     }
     length++; //更新列表的长度//6
   }
+
+  ///////////////////////////
+  //在任意位置插入一个元素
+  this.insert = function(position, element){
+    //检查越界值
+    if(position >= 0 && position <= length) {//1
+        var node = new Node(element),
+        current = head,
+        previous,
+        index = 0;
+        if(position === 0) {
+          node.next = current;//2
+          head = node;
+        }else {
+          while( index++ < position ) {//3
+            previous = current;
+            current = current.next;
+          }
+          node.next = current;//4
+          previous.next = node;//5
+        }
+        length++;
+        return true
+    } else {
+      return false;//6
+    }
+  }
+
+  ///toString
+  this.toString = function(){
+    var current = head,
+        string = '';
+    while(current){
+      string = current.element;
+      current = current.next;
+    }
+    return string;
+  }
+
+  ///indexOf 方法
+
+  this.indexOf = function(element){
+    var current = head,
+        index = -1;
+    while(current){
+      if(element === current.element){
+        return index;
+      }
+      index++;
+      current = current.next;
+    }
+    return -1 ;
+  };
+
+  //remove
+  this.remove = function(element){
+    var index = this.indexOf(element);
+    return this.removeAt(index);
+  }
+
+  this.isEmpty = function() {
+    return length === 0;
+  }
+
+  this.size = function() {
+    return length;
+  }
+
+  this.getHead = function() {
+    return head;
+  }
 }      
+
