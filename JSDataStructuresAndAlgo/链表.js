@@ -133,3 +133,90 @@ function LinkedList() {
   }
 }      
 
+
+//双向链表
+
+function DoublyLinkedList() {
+  var Node = function(element) {
+    this.element = element;
+    this.next = null;
+    this.prev = null;//新增
+  };
+  var length = 0 ;
+  var head = null ;
+  var tail = null ;
+  ////////////////////////////////
+  ///在任意位置插入一个新元素
+  this.insert = function(position, element) {
+    if(position >= 0 && position <=length){//检查越界值检查
+      var node = new Node(element),
+          current = head,
+          previous,
+          index = 0;
+      if ( position === 0 ){//在第一个位置添加
+        if(!head) {//没有元素
+          head = node;
+          tail = node;
+        } else {// 有元素
+          node.next = current;//node.next指向原来的第一个
+          current.prev = node;//原来的prev指向node
+          head = node ;
+        }
+      } else if( positon === length){
+        current = tail; //current 指向最后的元素
+        current.next = node;
+        node.prev = current;
+        tail = node;
+      } else {
+          while (index++ < position){
+            previous = current;
+            current = current.next;
+          }
+          node.next = current;
+          previous.next = node;
+
+          current.prev = node;
+          node.prev = previous;
+        }
+        length ++;
+        return true;    
+    }else {
+      return false
+    }
+  }
+
+  //////////////////
+  //从任意位置删除元素
+  this.removeAt = function(position){
+    if(position > -1 && position< length){
+      var current = head,
+          previous,
+          index = 0;
+      //头部，中间，尾部移除一个元素
+      if(position === 0){
+        head = current.next;//1
+        if(length === 1) {//2如果只有一项，更新tail
+          tail = null;//只要更改head和tail???????????
+        } else {
+          head.prev = null;//3更改第二项的指针
+        }
+      } else if (position == length-1){
+        current = tail;//4
+        tail = current.prev;
+        tail.next = null;
+      }else {
+        while(index++ < position ){//5
+          previous = current ;
+          current = current.next;
+        }
+        //将previous和current的下一项连接起来跳过current
+        previous.next = current.next;//6
+        current.next.prev = previous;
+      }        
+      length--;
+      return current.element;
+    } else {
+      return null;
+    }
+  }
+}
