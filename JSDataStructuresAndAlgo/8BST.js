@@ -25,12 +25,36 @@ function BinarySearchTree() {
       }else {//如果 有 左侧子节点
         insertNode(node.left, newNode)//7需要通过 递归调用 继续找到树的下一层
       }
-    }else {
-      if(node.right === null){
-        node.right = newNode
-      } else {
+    }else {//如果节点的键比当前节点的键大
+      if(node.right === null){//同时当前节点没有右侧子节点
+        node.right = newNode//插入新的节点
+      } else {//如果有右侧子节点,递归调用insertNode方法
         insertNode(node.right, newNode);
       }
     }
   }
+  //中序遍历
+  this.inOrderTraverse = function(callback){
+    inOrderTraverseNode(root, callback);
+  }
+
+  var inOrderTraverseNode = function(node, callback){console.log('node外: '+node);
+    if(node !== null){console.log('if内: '+node);
+      inOrderTraverseNode(node.left, callback);
+      callback(node.key);
+      inOrderTraverseNode(node.right, callback);
+    }
+  }
+  //先序遍历
+  
 }
+
+var tree = new BinarySearchTree();
+
+
+tree.insert(11);tree.insert(7);tree.insert(15);tree.insert(5);tree.insert(3);tree.insert(9);tree.insert(8);tree.insert(10);tree.insert(13);tree.insert(12);tree.insert(14);tree.insert(20);tree.insert(18);tree.insert(25);
+
+function printNode(value){ //{6}
+console.log(value);
+}
+tree.inOrderTraverse(printNode); //{7}
