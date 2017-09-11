@@ -67,12 +67,14 @@ bar();
 - 模块：
 
 
-## 全方位解读this
-
-**
+## 5全方位解读this
 
 >**this的指向，是在函数被调用的时候确定的。**也就是**执行上下文被创建**的时候确定的。
+>在函数执行的过程中，this一旦被确定了，就不可更改了
 
+
+### 一、全局对象中的this
+### 二、函数中的this
 
 例子
 
@@ -164,7 +166,7 @@ var obj = {
 active(obj.getA);
 ```
 
-### 使用call, apply显示指定this
+### 三、使用call, apply显示指定this
 
 它们除了参数略有不同，其功能完全一样。它们的第一个参数都为this将要指向的对象。
 
@@ -227,3 +229,54 @@ obj.getA();
 //我们期待的是getA被obj调用时，this指向obj
 //但是由于匿名函数的存在导致了this指向的丢失，在这匿名函数中this指向了全局。
 ```
+
+使用es5自带的bind方法
+
+
+```
+var obj = {
+    a: 20,
+    getA: function() {
+        setTimeout(function() {
+            console.log(this.a)
+        }.bind(this), 1000)
+    }
+}
+
+obj.getA();
+
+```
+
+### 四、构造函数与原型方法上的this
+
+结合下面的例子
+
+```
+function Person(name, age) {
+  //这里的this指向了谁？
+  this.name = name;
+  this.age = age;
+}
+
+Person.prototype.getName = function() {
+  //this
+  return this.name;
+}
+
+var p1 = new Person('nick', 20)
+p1.getName()
+
+```
+
+通过new操作符调用构造函数，会经理以下4个阶段
+
+> 
+- 创建一个新的对象；
+- 将构造函数的this指向这个新对象；
+- 指向构造函数的代码，为这个对象添加属性，方法等；
+- 返回新对象。
+
+因此，当new操作符调用构造函数时，this其实指向的就是这个新创建的对象，最后又将新的对象返回出来，被实例对象p1接收。因此，我们可以使，这个时候，构造函数的this，指向了新的实例对象，p1.
+
+而原型方法上的this就好理解多了，根据上边对函数中this的定义，p1.getName()中的getName为调用者，他被p1所拥有，因此getName中的this，也是指向了p1.
+
