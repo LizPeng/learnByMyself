@@ -224,5 +224,6 @@ var obj = {
 }
 
 obj.getA();
-//我们期待的是getA被obj调用时，this指向obj，但是由于匿名函数的存在导致了this指向的丢失，在这匿名函数中this指向了全局。
+//我们期待的是getA被obj调用时，this指向obj
+//但是由于匿名函数的存在导致了this指向的丢失，在这匿名函数中this指向了全局。
 ```
